@@ -43,13 +43,14 @@ sudo apt-get install -y docker-ce
 echo "Setup login directory"
 echo "cd /home/vagrant/data/"  >> /home/vagrant/.bash_profile
 echo "source ~/.bashrc"  >> /home/vagrant/.bash_profile
-echo "export PATH=$PATH:/opt/liquibase:/opt/terraform" >> /home/vagrant/.bash_profile
+#echo "export PATH=$PATH:/opt/liquibase:/opt/terraform" >> /home/vagrant/.bash_profile
 
 echo "Startup Dev MySQL container"
 sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name dev-mysql -d -p=3306:3306 mysql
 
-#echo "Startup Staging MySQL container"
-#sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name staging-mysql -d -p=3307:3306 mysql
 
-#echo "Startup Prod MySQL container"
-#sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name prod-mysql -d -p=3308:3306 mysql
+#echo "Startup Prometheus container"
+sudo docker run \
+    -p 9090:9090 \
+    -v /vagrant/prometheus.yml:/etc/prometheus/prometheus.yml \
+    prom/prometheus

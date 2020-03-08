@@ -1,6 +1,7 @@
 # dbco-tool-box
 
 Components installed:
+Docker
 MySQL
 
 Pre-req:
