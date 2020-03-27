@@ -45,12 +45,23 @@ echo "cd /home/vagrant/data/"  >> /home/vagrant/.bash_profile
 echo "source ~/.bashrc"  >> /home/vagrant/.bash_profile
 #echo "export PATH=$PATH:/opt/liquibase:/opt/terraform" >> /home/vagrant/.bash_profile
 
+echo "Install Prometheus"
+git clone https://github.com/in4it/prometheus-course.git
+cd /prometheus-course/scripts
+. ./1-install.sh
+service prometheus restart
+
+echo "Install Exporter""
+
+echo "Install Grafana"
+
 echo "Startup Dev MySQL container"
 sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name dev-mysql -d -p=3306:3306 mysql
 
+echo "Startup Dev Postgres container"
 
 #echo "Startup Prometheus container"
-sudo docker run \
-    -p 9090:9090 \
-    -v /vagrant/prometheus.yml:/etc/prometheus/prometheus.yml \
-    prom/prometheus
+#sudo docker run \
+#    -p 9090:9090 \
+#    -v /vagrant/prometheus.yml:/etc/prometheus/prometheus.yml \
+#    prom/prometheus
