@@ -17,3 +17,11 @@ mysql -uroot -pexample
 
 To destroy vagrant env:
 vagrant destroy
+
+Configuration change:
+vagrant reload
+
+Restart:
+service prometheus restart
+systemctl start grafana-server
+sudo docker restart dev-mysql

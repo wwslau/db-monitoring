@@ -54,6 +54,8 @@ service prometheus restart
 echo "Install Exporter""
 
 echo "Install Grafana"
+cd /prometheus-course/scripts
+. ./3-install-grafana.sh
 
 echo "Startup Dev MySQL container"
 sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name dev-mysql -d -p=3306:3306 mysql
