@@ -25,3 +25,6 @@ Restart:
 service prometheus restart
 systemctl start grafana-server
 sudo docker restart dev-mysql
+
+Git operations:
+git push origin master
