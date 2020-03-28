@@ -61,6 +61,7 @@ echo "Startup Dev MySQL container"
 sudo  docker run -e MYSQL_ROOT_PASSWORD=example --name dev-mysql -d -p=3306:3306 mysql
 
 echo "Startup Dev Postgres container"
+docker run --name dev-postgres -e POSTGRES_PASSWORD=example -d postgres
 
 #echo "Startup Prometheus container"
 #sudo docker run \
