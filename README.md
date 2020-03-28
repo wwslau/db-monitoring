@@ -22,10 +22,11 @@ Configuration change:
 vagrant reload
 
 Restart:
-service prometheus restart
+systemctl start prometheus
 systemctl start grafana-server
 sudo docker restart dev-mysql
 sudo docker restart dev-postgres
+sudo docker restart mysql-exporter
 
 Git operations:
 git push origin master
