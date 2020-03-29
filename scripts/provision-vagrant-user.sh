@@ -53,14 +53,20 @@ service prometheus restart
 
 echo "Install Exporter"
 docker network create my-mysql-network
-docker pull prom/mysqld-exporter
+docker pull prom/mysqld-exporter:latest
 
 docker run -d \
   -p 9104:9104 \
   --name mysql-exporter  \
   --network my-mysql-network  \
   -e DATA_SOURCE_NAME="root:example@(my-mysql-network:3306)/" \
-  prom/mysqld-exporter
+  prom/mysqld-exporter:latest \
+  --collect.info_schema.processlist \
+  --collect.info_schema.innodb_metrics \
+  --collect.info_schema.tablestats \
+  --collect.info_schema.tables \
+  --collect.info_schema.userstats \
+  --collect.engine_innodb_status 
 
 echo "Install Grafana"
 cd /prometheus-course/scripts
